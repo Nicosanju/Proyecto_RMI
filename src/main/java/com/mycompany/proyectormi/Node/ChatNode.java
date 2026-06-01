@@ -6,6 +6,8 @@ import com.mycompany.proyectormi.pantalla.ChatWindow;
 import com.mycompany.proyectormi.pantalla.RegisterWindow;
 import com.mycompany.proyectormi.server.RMIServer;
 import com.mycompany.proyectormi.service.ChatService;
+import java.rmi.RemoteException;
+import javax.swing.JOptionPane;
 
 public class ChatNode {
 
@@ -93,7 +95,11 @@ public class ChatNode {
 
         } catch (Exception ex) {
 
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(
+                    null,
+                    ex.getMessage(),
+                    "Error al iniciar el chat",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -119,36 +125,39 @@ public class ChatNode {
 
     private void sendMessage() {
 
-        try {
+        if (remoteChat == null) {
+            try {
+                connectToRemote(
+                        "localhost",
+                        remotePort,
+                        remoteService);
 
-            if (remoteChat == null) {
-                try {
-                    connectToRemote(
-                            "localhost",
-                            remotePort,
-                            remoteService);
+                window.appendMessage(
+                        "Intentando conectar...");
+            } catch (Exception e) {
+                window.appendMessage(
+                        "No se pudo conectar con "
+                        + remoteService);
 
-                    window.appendMessage(
-                            "Intentando conectar...");
-                } catch (Exception e) {
-                    window.appendMessage(
-                            "No se pudo conectar con "
-                            + remoteService);
-
-                }
             }
+        }
 
-            String text
-                    = window.getjTextField1().getText();
+        String text
+                = window.getjTextField1().getText();
 
-            if (text.isBlank()) {
-                return;
-            }
+        if (text.isEmpty()) {
 
-            window.appendMessage(
-                    "[YO] " + text);
+            JOptionPane.showMessageDialog(window, "No puedes escribir un mensaje en blanco");
 
-            if (remoteChat != null) {
+            return;
+        }
+
+        window.appendMessage(
+                "[YO] " + text);
+
+        if (remoteChat != null) {
+
+            try {
 
                 ChatMessage message
                         = new ChatMessage(
@@ -157,13 +166,14 @@ public class ChatNode {
 
                 remoteChat.receiveMessage(
                         message);
+
+            } catch (RemoteException ex) {
+
+                window.appendMessage(
+                        "El usuario remoto se ha desconectado");
+
+                remoteChat = null;
             }
-
-            window.getjTextField1().setText("");
-
-        } catch (Exception ex) {
-
-            ex.printStackTrace();
         }
     }
 

@@ -1,6 +1,7 @@
 com\mycompany\proyectormi\pantalla\ChatWindow$1.class
 com\mycompany\proyectormi\server\RMIServer.class
 com\mycompany\proyectormi\service\MessageListener.class
+com\mycompany\proyectormi\UserRegistry.class
 com\mycompany\proyectormi\pantalla\ChatWindow.class
 com\mycompany\proyectormi\pantalla\RegisterWindow$1.class
 com\mycompany\proyectormi\ProyectoRMI.class
@@ -8,6 +9,7 @@ com\mycompany\proyectormi\cliente\RMIClient.class
 com\mycompany\proyectormi\service\ChatService.class
 com\mycompany\proyectormi\model\User.class
 com\mycompany\proyectormi\Node\ChatNode.class
+com\mycompany\proyectormi\service\UserRegistryService.class
 com\mycompany\proyectormi\model\ChatMessage.class
 com\mycompany\proyectormi\service\ChatServiceImpl.class
 com\mycompany\proyectormi\pantalla\RegisterWindow.class
