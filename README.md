@@ -12,18 +12,18 @@ Este proyecto consiste en el desarrollo de una aplicación de chat distribuido u
 Cada instancia de la aplicación actúa simultáneamente como cliente y servidor RMI, permitiendo que dos usuarios intercambien mensajes mediante invocaciones remotas sin necesidad de un servidor central dedicado.
 La aplicación implementa una comunicación punto a punto (P2P) donde cada usuario publica un servicio remoto para recibir mensajes y, al mismo tiempo, consume el servicio remoto del otro usuario para enviar mensajes.
 ## Características Principales
--Comunicación distribuida mediante Java RMI.
--Arquitectura P2P (Peer to Peer).
--Interfaz gráfica desarrollada con Java Swing.
--Envío y recepción de mensajes en tiempo real.
--Serialización de mensajes mediante objetos Java.
--Registro dinámico de usuarios.
--Comunicación bidireccional entre dos JVM independientes.
+-  Comunicación distribuida mediante Java RMI.
+-  Arquitectura P2P (Peer to Peer).
+-  Interfaz gráfica desarrollada con Java Swing.
+-  Envío y recepción de mensajes en tiempo real.
+-  Serialización de mensajes mediante objetos Java.
+-  Registro dinámico de usuarios.
+-  Comunicación bidireccional entre dos JVM independientes.
 
 ## Manual de Usuario
 ### Requisitos previos:
--**JDK 17 o superior**
--**Apache NetBeans (recomendado)**
+-  **JDK 17 o superior**
+-  **Apache NetBeans (recomendado)**
 **Maven**
 ### Estructura del proyecto
 ```
