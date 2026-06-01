@@ -5,6 +5,8 @@
 package com.mycompany.proyectormi.cliente;
 
 import com.mycompany.proyectormi.service.ChatService;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
@@ -20,13 +22,20 @@ public class RMIClient {
             String serviceName)
             throws Exception {
 
-        Registry registry =
-                LocateRegistry.getRegistry(
-                        host,
-                        port);
+        try {
 
-        return (ChatService)
-                registry.lookup(
-                        serviceName);
+            Registry registry
+                    = LocateRegistry.getRegistry(
+                            host,
+                            port);
+
+            return (ChatService) registry.lookup(serviceName);
+
+        } catch (NotBoundException | RemoteException ex) {
+
+            throw new Exception(
+                    "No se encontró el usuario "
+                    + serviceName);
+        }
     }
 }

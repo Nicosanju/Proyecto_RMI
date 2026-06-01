@@ -5,7 +5,10 @@
 package com.mycompany.proyectormi.pantalla;
 
 import com.mycompany.proyectormi.Node.ChatNode;
+import com.mycompany.proyectormi.model.User;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -15,8 +18,6 @@ import javax.swing.JTextField;
  * @author Nico
  */
 public class ChatWindow extends javax.swing.JFrame {
-
-   
 
     /**
      * Creates new form ChatWindow
@@ -157,5 +158,4 @@ public class ChatWindow extends javax.swing.JFrame {
         jTextArea1.setCaretPosition(
                 jTextArea1.getDocument().getLength());
     }
-
 }
